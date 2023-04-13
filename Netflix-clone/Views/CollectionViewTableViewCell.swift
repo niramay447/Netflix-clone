@@ -16,6 +16,7 @@ class CollectionViewTableViewCell: UITableViewCell {
     private let collectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 140, height: 200)
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
@@ -37,7 +38,10 @@ class CollectionViewTableViewCell: UITableViewCell {
         fatalError()
     }
     
-    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        collectionView.frame = contentView.bounds
+    }
 }
 
 
